@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 8vmin;
 }
@@ -16,8 +12,4 @@
 
 body {
   background-color: #282c34;
-}
-
-.App-section-search {
-  background-color: orange;
 }
