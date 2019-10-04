@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../logo.svg';
 import './App.css';
+import { Search } from '../container/index';
 
 const App = () => {
   return (
@@ -8,8 +9,9 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <span>Movies</span>
-    </header>
-      <section className="App-section-movie">
+      </header>
+      <section>
+        <Search />
       </section>
     </div>
   );
