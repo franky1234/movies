@@ -1,11 +1,12 @@
 import React from 'react';
 import './MovieList.css';
+import { MovieItem } from '../index';
+
 const MovieList = ({ movieList }) => {
+  console.log('aaaa', movieList);
   return (
     <div className="container-movie-list">
-      <ul>
-        {movieList.map(({ Title }, i) => <li key={i}> {Title}</li>)}
-      </ul>
+        {movieList.map(( movie , i) => <MovieItem key={i} {...movie}/>)}
     </div>
   );
 }

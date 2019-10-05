@@ -32,10 +32,11 @@ const Search = () => {
     if (Constant.KEY_ENTER === key) {
       searchMovies(search);
     }
+    const { movieList } = search;
     setSearch({
       text: value,
-      movieList: []
-    })
+      movieList
+    });
   }
 
   return (

@@ -3,7 +3,8 @@ const Constants = {
   BASE_URL: 'http://www.omdbapi.com/',
   API_KEY: 'd8686d53',
   RESPONSE_OK: 'True',
-  RESPONSE_ERROR: 'False'
+  RESPONSE_ERROR: 'False',
+  SRC_IMAGE: 'N/A'
 };
 
 export default Constants;
