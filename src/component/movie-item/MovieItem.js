@@ -1,29 +1,39 @@
 import React from 'react';
 import './MovieItem.css';
 import logo from '../../logo.svg';
-import {Constant} from '../../common/index';
+import { Constant } from '../../common/index';
 
 const hasSourcePath = src => {
   return src !== Constant.SRC_IMAGE ? true : false;
 }
 
-const setSourcePath = srcPath => {  
-  if(hasSourcePath(srcPath)) {
+const setSourcePath = srcPath => {
+  if (hasSourcePath(srcPath)) {
     return srcPath;
   }
   return logo;
 }
 
-const MovieItem = ({ Title, Poster, Type, Year}) => {
+const MovieItem = ({ Title: title, Poster: poster, Type: type, Year: year }) => {
   return (
     <div className="movie-item">
       <div className="movie-image">
-        <img src={setSourcePath(Poster)} alt={ Title + 'picture'}/>
+        <img src={setSourcePath(poster)} alt={title + 'picture'} />
       </div>
       <div className="movie-info">
-        <span>title</span>
-        <span>type</span>
-        <span>year</span>
+        <div className="movie-top-info">
+          <span className="movie-title">
+            {title}
+          </span>
+          <span className="movie-year">
+            {year}
+          </span>
+        </div>
+        <span className="movie-description">
+          <p>
+            {type}
+          </p>
+        </span>
       </div>
     </div>
   );
