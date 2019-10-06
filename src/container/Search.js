@@ -16,11 +16,16 @@ const Search = () => {
   }
 
   const searchMovies = async ({ text }) => {
-    const response = await MovieService.searchMovieList(text);
-    setSearch({
-      text,
-      movieList: movieListResponse(response)
-    });
+    try {
+      const response = await MovieService.searchMovieList(text);
+      // todo: error response      
+      setSearch({
+        text,
+        movieList: movieListResponse(response)
+      });
+    } catch (error) {
+
+    }
   }
 
   const onSearchText = () => {
@@ -32,10 +37,15 @@ const Search = () => {
     if (Constant.KEY_ENTER === key) {
       searchMovies(search);
     }
+    const { movieList } = search;
     setSearch({
       text: value,
-      movieList: []
-    })
+      movieList
+    });
+  }
+  const showList = () => {
+    const { movieList } = search;
+    return movieList.length > 0 ? true : false;
   }
 
   return (
@@ -50,7 +60,9 @@ const Search = () => {
           </div>
         </div>
       </div>
-      <MovieList {...search} />
+      {
+        showList() ? <MovieList {...search} /> : ''
+      }
     </div>
   );
 }

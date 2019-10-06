@@ -1,0 +1,49 @@
+.movie-item {
+  padding: 10px 5px 10px 0px;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.movie-image {
+  height: 70px;
+  width: 70px;
+  object-fit: scale-down;
+}
+
+.movie-image>img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+}
+
+.movie-info {
+  padding: 5px 20px;
+  width: 100%;
+}
+
+.movie-info>span {
+  display: block;
+}
+
+.movie-item:hover {
+  background-color: #F5F5F5;
+}
+
+.movie-item {
+  background-color: inherit;
+}
+
+.movie-top-info {
+  font-weight: 800;
+}
+
+.movie-description>p {
+  color: #BDBDBD;
+  font-size: calc(10px + 0.7vmin);
+  font-style: italic;
+}
+
+.movie-top-info>.movie-year {
+  float: right;
+}

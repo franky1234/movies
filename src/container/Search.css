@@ -15,6 +15,7 @@
   position: absolute;
   font-size: inherit;
   border: 0;
+  padding: 0 42px 0 20px;
 }
 
 .button-search {
@@ -25,6 +26,7 @@
   position: absolute;
   right: 0;
   border: 0;
+  background-color: #09D3AC;
 }
 
 .btn-search-container {
@@ -32,6 +34,6 @@
   right: 0;
   border-radius: 50%;
   width: 40px;
-  height: 41px;
+  height: 40px;
   top: 0;
 }
