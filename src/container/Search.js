@@ -1,30 +1,40 @@
 import React, { useState } from 'react';
 import './Search.css';
 import { Constant } from '../common/index';
-import { MovieList } from '../component/index';
+import { MovieList, ErrorMessage } from '../component/index';
 import { MovieService } from '../service/index';
 
 const Search = () => {
-  const [search, setSearch] = useState({ text: '', movieList: [] });
-  const [errorMessage, setErrorMessage] = useState({ isVisible: false, message: '' });
+  const [search, setSearch] = useState({ text: '', movieList: [], borderStyle: 'border-list' });
+  const [errorMessage, setErrorMessage] = useState({ isVisible: false, message: '', borderStyle: 'border-error' });
 
-  const movieListResponse = ({ Response, Search }) => {
-    if (Response === Constant.RESPONSE_OK) {
-      return [...Search];
+  const movieListResponse = ({ Response: response, Search: search, Error: error }) => {
+    if (response === Constant.RESPONSE_OK) {
+      return [...search];
     }
+    setErrorMessage({
+      isVisible: true,
+      message: error,
+      borderStyle: 'border-error'
+    });
     return [];
   }
 
   const searchMovies = async ({ text }) => {
     try {
       const response = await MovieService.searchMovieList(text);
-      // todo: error response      
+      const movieList = movieListResponse(response);
       setSearch({
         text,
-        movieList: movieListResponse(response)
+        movieList,
+        borderStyle: 'border-list'
       });
-    } catch (error) {
-
+    } catch ({ message }) {
+      setErrorMessage({
+        isVisible: true,
+        message,
+        borderStyle: 'border-error'
+      });
     }
   }
 
@@ -40,7 +50,8 @@ const Search = () => {
     const { movieList } = search;
     setSearch({
       text: value,
-      movieList
+      movieList,
+      borderStyle: 'border-list'
     });
   }
   const showList = () => {
@@ -48,6 +59,7 @@ const Search = () => {
     return movieList.length > 0 ? true : false;
   }
 
+  const { isVisible } = errorMessage;
   return (
     <div>
       <div className="section-search">
@@ -61,7 +73,7 @@ const Search = () => {
         </div>
       </div>
       {
-        showList() ? <MovieList {...search} /> : ''
+        showList() ? <MovieList {...search} /> : isVisible ? <ErrorMessage {...errorMessage} /> : ''
       }
     </div>
   );
