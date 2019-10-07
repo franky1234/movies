@@ -2,9 +2,9 @@ import React from 'react';
 import './MovieList.css';
 import { MovieItem } from '../index';
 
-const MovieList = ({ movieList }) => {
+const MovieList = ({ movieList, borderStyle }) => {
   return (
-    <div className="container-movie-list">
+    <div className={`${borderStyle} container-movie-list`}>
       {movieList.map((movie, i) => <MovieItem key={i} {...movie} />)}
     </div>
   );
